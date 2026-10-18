@@ -68,13 +68,13 @@ main {
    2. Top Bar
    -------------------------------------------------------------------------- */
 .topbar {
-  height: 52px;
+  height: 48px;
   padding: 0 clamp(18px, 3vw, 48px);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 20px;
-  border-bottom: 1px solid rgba(30, 30, 35, 0.06);
+  border-bottom: 1px solid rgba(30, 30, 35, 0.05);
 }
 
 .wordmark {
