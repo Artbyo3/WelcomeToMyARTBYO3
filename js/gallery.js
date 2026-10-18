@@ -133,7 +133,7 @@ function buildArtbook() {
           WELCOME TO<br>MY ART BY O3<span class="accent-dot">.</span>
         </div>
         <p style="font-size:12.5px;line-height:1.75;color:#b2b5c0;max-width:440px;margin-top:16px">
-          Original digital illustration collection by o3. Every piece in this collection was created using Paint Tool SAI and Paint Tool SAI 2, with no other programs used.
+          Original digital illustration collection by o3. Created with Paint Tool SAI and Paint Tool SAI 2.
         </p>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(170px, 1fr));gap:24px;margin-top:28px;border-top:1px solid rgba(255,255,255,0.1);padding-top:20px">
@@ -141,8 +141,7 @@ function buildArtbook() {
             <div class="micro" style="color:var(--accent);margin-bottom:8px;font-weight:600">SOFTWARE</div>
             <div style="font-size:12px;line-height:1.7;color:#d8dbe4;font-family:var(--font-mono)">
               Paint Tool SAI<br>
-              Paint Tool SAI 2<br>
-              <span style="color:#888b96;font-size:10px">(Exclusive software used)</span>
+              Paint Tool SAI 2
             </div>
           </div>
           <div>

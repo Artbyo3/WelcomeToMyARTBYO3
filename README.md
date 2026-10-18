@@ -1,17 +1,14 @@
 # WelcomeToMyArtbyo3
 
-Original digital illustration portfolio and artbook collection by **o3**.
-
-Every illustration in this archive was created exclusively using **Paint Tool SAI** and **Paint Tool SAI 2**, spanning works from 2022 to 2026.
+Original digital illustration portfolio and artbook collection by **o3**, created with **Paint Tool SAI** and **Paint Tool SAI 2** (2022–2026).
 
 ---
 
 ## Production Setup & Specifications
 
 - **Software**:
-  - Systemax Paint Tool SAI
-  - Paint Tool SAI Ver.2
-  - *(No other digital painting programs used)*
+  - Paint Tool SAI
+  - Paint Tool SAI 2
 
 - **Hardware & Tablets**:
   1. **XP-Pen Star G640S** *(First tablet)*
@@ -22,7 +19,7 @@ Every illustration in this archive was created exclusively using **Paint Tool SA
 
 ## Features
 
-- **59 Original Works**: Sequenced chronologically across 31 spreads (62 pages) with verified resolution, file size, and creation date metadata.
+- **60 Original Works**: Sequenced chronologically across 31 spreads (62 pages) with verified resolution, file size, and creation date metadata.
 - **Maximized Viewport**: High-impact editorial two-page spread viewer designed to allocate maximum screen area directly to artwork.
 - **Authentic Pixel Clarity**: Zero artificial borders, fake frame overlays, or resampled cropping. Artwork renders in native fidelity with full `contain` fit.
 - **Two-Page Spread Engine**:
@@ -31,7 +28,7 @@ Every illustration in this archive was created exclusively using **Paint Tool SA
   - Keyboard Navigation: Arrow keys (`←`, `→`) and progress indicator.
 - **Interactive Contents (INDEX)**:
   - Era shortcut chapters.
-  - Visual thumbnail grid for all 59 works with direct page jumping.
+  - Visual thumbnail grid for all 60 works with direct page jumping.
 - **Fullscreen Lightbox**: One-click zoom inspector showing high-resolution art, dimensions, creation timestamp, and file size.
 - **Pure Web Standards**: Zero external runtime dependencies, fast loading, fully static, and ready for GitHub Pages.
 
