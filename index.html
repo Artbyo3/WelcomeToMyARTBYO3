@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WelcomeToMyArtbyo3</title>
+  <meta name="description" content="Digital anime artbook & illustration collection by o3 created with Paint Tool SAI — WelcomeToMyArtbyo3." />
+
+  <!-- Fonts: Space Grotesk (Editorial Display) & DM Mono (Technical Monospace) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main>
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="wordmark">
+        WelcomeToMyArtbyo3<span class="accent-dot">.</span>
+      </div>
+      <div class="topright">
+        <button type="button" class="textbtn" id="indexBtn" aria-haspopup="dialog" aria-controls="menu">INDEX &nbsp; ↗</button>
+      </div>
+    </header>
+
+    <!-- Main Two-Page Reader -->
+    <section class="reader" aria-label="Artbook Two-Page Reader">
+      <div class="book" id="book">
+        <section class="page left" id="left" aria-label="Left Page (Verso)"></section>
+        <section class="page right" id="right" aria-label="Right Page (Recto)"></section>
+      </div>
+
+      <!-- Navigation Bar -->
+      <nav class="nav" aria-label="Spread Navigation">
+        <div class="meta"></div>
+        <div class="controls">
+          <button type="button" class="arrow" id="prev" aria-label="Previous spread">←</button>
+          <span class="progress" aria-hidden="true"><span id="prog"></span></span>
+          <button type="button" class="arrow" id="next" aria-label="Next spread">→</button>
+        </div>
+        <div class="count" id="count" aria-live="polite">01–02 / 12</div>
+      </nav>
+    </section>
+  </main>
+
+  <!-- Table of Contents / Chapter Index Modal -->
+  <div class="chapter-menu" id="menu" role="dialog" aria-modal="true" aria-label="Contents">
+    <div class="panel">
+      <div class="panelhead">
+        <h2>Contents<span class="accent-dot">.</span></h2>
+        <button type="button" class="textbtn" id="close">CLOSE ×</button>
+      </div>
+
+      <div class="chapter-tabs" role="tablist">
+        <button type="button" class="chapter-tab-btn is-active" id="tabChapters" role="tab" aria-selected="true">CHAPTERS</button>
+        <button type="button" class="chapter-tab-btn" id="tabAllWorks" role="tab" aria-selected="false">ALL WORKS</button>
+      </div>
+
+      <div id="chapters" class="chapter-list" role="tabpanel"></div>
+      <div id="worksGrid" class="works-index-grid" role="tabpanel" style="display: none;"></div>
+
+      <div class="panel-foot">
+        <span class="micro" id="menuCount">ORIGINAL WORKS · 2022–2026</span>
+        <span class="micro">PAINT TOOL SAI &amp; SAI 2 · WELCOMETOMYARTBYO3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Artwork Lightbox / Zoom Modal -->
+  <div class="lightbox-viewer" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork Inspector">
+    <div class="lb-bar">
+      <div class="lb-title" id="lbTitle">Illustration</div>
+      <div class="lb-actions">
+        <button type="button" class="textbtn" id="lbDraftBtn" style="display: none;">SKETCH ⇄</button>
+        <button type="button" class="textbtn" id="lbClose">CLOSE ×</button>
+      </div>
+    </div>
+    <div class="lb-body" id="lbBody">
+      <img id="lbImg" src="" alt="" />
+    </div>
+    <div class="lb-meta">
+      <span id="lbDetails">Paint Tool SAI · Digital Illustration</span>
+      <span class="micro">CLICK ANYWHERE OUTSIDE OR PRESS ESC TO CLOSE</span>
+    </div>
+  </div>
+
+  <!-- Artbook Engine Controller -->
+  <script type="module" src="js/gallery.js"></script>
+</body>
+</html>

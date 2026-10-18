@@ -1,0 +1,747 @@
+/* ==========================================================================
+   WelcomeToMyArtbyo3
+   Editorial Anime Artbook Engine · Created with Paint Tool SAI & SAI 2
+   Clean English Typography · Real 2-Page Spread · Zero Emojis · No Sound
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & Global Reset
+   -------------------------------------------------------------------------- */
+:root {
+  --ink: #202025;
+  --muted: #99979b;
+  --paper: #f5f3ee;
+  --paper-subtle: #eeece6;
+  --line: #dbd9d5;
+  --line-strong: #c2bfb9;
+  --accent: #d95042;
+  --desk: #e6e4e0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--desk);
+  color: var(--ink);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+img {
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+main {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   2. Top Bar
+   -------------------------------------------------------------------------- */
+.topbar {
+  height: 52px;
+  padding: 0 clamp(18px, 3vw, 48px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid rgba(30, 30, 35, 0.06);
+}
+
+.wordmark {
+  font-size: 15px;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+  display: flex;
+  align-items: baseline;
+}
+
+.wordmark-sub {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  color: #91908e;
+  margin-left: 15px;
+  font-family: 'DM Mono', monospace;
+}
+
+.accent-dot {
+  color: var(--accent);
+}
+
+.topright {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.topright span,
+.topright button {
+  font: 11px 'DM Mono', monospace;
+  letter-spacing: 0.06em;
+}
+
+.textbtn {
+  border: 0;
+  background: none;
+  padding: 6px 0;
+  color: var(--ink);
+  font: 11px 'DM Mono', monospace;
+  letter-spacing: 0.06em;
+  transition: color 0.15s ease;
+}
+
+.textbtn:hover {
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   3. Main Reader & Open 2-Page Book (Comfortable Ergonomic Sizing)
+   -------------------------------------------------------------------------- */
+.reader {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(10px, 1.8vh, 22px) clamp(16px, 3vw, 44px) clamp(6px, 1.2vh, 14px);
+}
+
+.book {
+  width: min(1440px, 92vw);
+  height: min(78vh, 800px);
+  min-height: 480px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--paper);
+  box-shadow: 0 16px 44px rgba(20, 20, 25, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Central binding crease line */
+.book::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(30, 30, 35, 0.12);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.page {
+  min-width: 0;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-inner {
+  height: 100%;
+  padding: clamp(16px, 2.2vw, 36px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.page.left {
+  border-right: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+/* --------------------------------------------------------------------------
+   4. Editorial Typography, Page Footers & Micro Labels
+   -------------------------------------------------------------------------- */
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  padding-top: 10px;
+  margin-top: 6px;
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.page-footer-main {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.page-footer-main .caption {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.page-footer-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.page-footer-meta .res {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+}
+
+/* Page Numbers (In-flow flex item to prevent any text collisions) */
+.num {
+  font: 10.5px 'DM Mono', monospace;
+  color: #7a7876;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+/* Standalone overlay page number for full-bleed poster pages */
+.num-overlay {
+  position: absolute;
+  bottom: 14px;
+  left: clamp(16px, 2.2vw, 36px);
+  z-index: 5;
+  background: rgba(18, 20, 26, 0.75);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.micro {
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  color: var(--accent);
+}
+
+.hero-title {
+  font-size: clamp(44px, 6.4vw, 105px);
+  line-height: 0.85;
+  letter-spacing: -0.08em;
+  font-weight: 600;
+  margin: 0;
+  word-break: break-word;
+}
+
+.display-title {
+  font-size: clamp(38px, 5.2vw, 82px);
+  line-height: 0.92;
+  letter-spacing: -0.08em;
+  margin: 0;
+  font-weight: 500;
+}
+
+.caption {
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: #75737a;
+}
+
+.footnotes {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. Artwork Display (Clean, Unframed, Full Fidelity)
+   -------------------------------------------------------------------------- */
+.art {
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  width: 100%;
+}
+
+.art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Hover Action Controls (Zoom) */
+.art-controls {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.art:hover .art-controls {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.art-btn {
+  font: 9px 'DM Mono', monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(18, 18, 22, 0.9);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 3px 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.art-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   6. Navigation Bar
+   -------------------------------------------------------------------------- */
+.nav {
+  height: 52px;
+  width: min(1440px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav .controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.arrow {
+  width: 42px;
+  height: 34px;
+  background: transparent;
+  border: 1px solid #bbb9b6;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.arrow:hover:not(:disabled) {
+  background: #222;
+  color: white;
+  border-color: #222;
+}
+
+.arrow:disabled {
+  opacity: 0.23;
+  cursor: default;
+}
+
+.nav .meta,
+.nav .count {
+  font: 10px 'DM Mono', monospace;
+  color: #777;
+  letter-spacing: 0.05em;
+}
+
+.nav .count {
+  text-align: right;
+}
+
+.progress {
+  width: 140px;
+  height: 4px;
+  background: #bcbab6;
+  position: relative;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.progress:hover {
+  height: 6px;
+}
+
+.progress span {
+  height: 100%;
+  background: #252525;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 2px;
+  transition: width 0.25s ease;
+  pointer-events: none;
+}
+
+.progress:hover span {
+  background: var(--accent);
+}
+
+/* Spread Enter Transition */
+.book.transition .page-inner {
+  animation: enterSpread 0.32s ease both;
+}
+
+@keyframes enterSpread {
+  from {
+    opacity: 0.3;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Table of Contents / Chapter Index Modal
+   -------------------------------------------------------------------------- */
+.chapter-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 27, 30, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: none;
+  z-index: 80;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.chapter-menu.open {
+  display: flex;
+}
+
+.panel {
+  width: min(720px, 100%);
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--paper);
+  padding: 36px clamp(20px, 4vw, 42px);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.2);
+}
+
+.panelhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.panel h2 {
+  font-size: 38px;
+  line-height: 1;
+  letter-spacing: -0.07em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.chapter-tabs {
+  display: flex;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+
+.chapter-tab-btn {
+  font: 11px 'DM Mono', monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 0;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.chapter-tab-btn.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+.chapter-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.chapterlink {
+  width: 100%;
+  padding: 13px 0;
+  border: 0;
+  background: none;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  font-size: 15.5px;
+  letter-spacing: -0.03em;
+  transition: color 0.15s ease;
+}
+
+.chapterlink:hover {
+  color: var(--accent);
+}
+
+.chapterlink small {
+  font: 10px 'DM Mono', monospace;
+  color: #888;
+}
+
+.works-index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-top: 6px;
+}
+
+.work-index-card {
+  background: var(--paper-subtle);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.work-index-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.work-index-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #111;
+  border-radius: 1px;
+}
+
+.work-index-title {
+  font: 10px 'DM Mono', monospace;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+.work-index-page {
+  font: 9px 'DM Mono', monospace;
+  color: var(--muted);
+}
+
+.panel-foot {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+   8. Fullscreen Lightbox / Zoom Modal
+   -------------------------------------------------------------------------- */
+.lightbox-viewer {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 16, 22, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: none;
+  z-index: 100;
+  flex-direction: column;
+}
+
+.lightbox-viewer.open {
+  display: flex;
+}
+
+.lb-bar {
+  height: 56px;
+  padding: 0 clamp(18px, 3.6vw, 62px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(18, 20, 28, 0.85);
+}
+
+.lb-title {
+  font: 12.5px 'DM Mono', monospace;
+  letter-spacing: 0.08em;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.lb-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.lb-actions .textbtn {
+  color: #aaa;
+}
+
+.lb-actions .textbtn:hover {
+  color: var(--accent);
+}
+
+.lb-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+  cursor: zoom-out;
+}
+
+.lb-body img {
+  max-width: 92vw;
+  max-height: 80vh;
+  object-fit: contain;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  border-radius: 2px;
+}
+
+.lb-meta {
+  height: 44px;
+  padding: 0 clamp(18px, 3.6vw, 62px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 20, 28, 0.85);
+  font: 10px 'DM Mono', monospace;
+  color: #888;
+}
+
+/* --------------------------------------------------------------------------
+   9. Mobile Responsive Adaptations (Matches artbyo3_artbook_clean.html)
+   -------------------------------------------------------------------------- */
+@media (max-width: 760px) {
+  .topbar {
+    height: 44px;
+  }
+  .wordmark-sub {
+    display: none;
+  }
+  .topright {
+    gap: 12px;
+  }
+  .reader {
+    padding: 2px 6px;
+    justify-content: center;
+  }
+  .book {
+    height: calc(100svh - 96px);
+    min-height: 440px;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  .book::after {
+    display: none;
+  }
+  .page {
+    display: none;
+  }
+  .page.mobile-current {
+    display: block;
+  }
+  .page-inner {
+    padding: 8px 12px 14px;
+  }
+  .hero-title {
+    font-size: clamp(38px, 12vw, 68px);
+  }
+  .display-title {
+    font-size: clamp(32px, 9vw, 56px);
+  }
+  .nav {
+    height: 46px;
+    width: 100%;
+    grid-template-columns: 1fr auto;
+  }
+  .nav .meta {
+    display: none;
+  }
+  .nav .controls {
+    gap: 12px;
+  }
+  .progress {
+    width: 80px;
+  }
+  .panel {
+    padding: 24px 18px;
+  }
+  .panel h2 {
+    font-size: 32px;
+  }
+}
