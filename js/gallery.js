@@ -55,7 +55,7 @@ function buildArtbook() {
           <span class="micro" style="color:var(--muted)">${allWorks.length} ORIGINAL WORKS · 2022–2026</span>
         </div>
         <div class="page-footer-meta">
-          <span class="micro">PAINT TOOL SAI &amp; SAI 2</span>
+          <span class="micro">WELCOMETOMYARTBYO3</span>
         </div>
       </div>
     </div>
